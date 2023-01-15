@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
-import Menu from "./components/Toggle/Menu";
-import Toggle from "./components/Toggle/Toggle";
+import HackerNews from "./components/HackerNews/HackerNews";
+
 
 
 function App() {
   
   return (
     <div>
-      <Menu></Menu>
-      <Toggle></Toggle>
+      <HackerNews></HackerNews>
     </div>
   );
 }
