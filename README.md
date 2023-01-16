@@ -1,46 +1,55 @@
-# Getting Started with Create React App and Redux
+# Generator function
+ ### Cấu trúc của generator là có dấu *phía sau function 
+```
+  function* ABC(){
+    // yield: giống với return
+    yield "Chạy lần đầu";
+    yield "Chạy lần 2";
+    .....
+  }
+```
+- Là 1 hàm sẽ trả về nhiều giá trị khác nhau sau mỗi lần gọi
+- **Generator fuction** rất đặt biệt vì khi bỏ nó vào vòng lặp vô tận nó sẽ không chạy vô tận mà chỉ luôn luôn trả về 1 giá trị duy nhất
+ ## Công thức gọi hàm
+ ```
+  const iterator = ABC();
+ ```
+ - iterator sẽ chứa 3 phương thức: **next** , **return** và **throw**
+![image](https://user-images.githubusercontent.com/114068860/212685120-2c1c8000-060b-46b5-8b27-6be7cdf430ba.png)
+ 
+ ### next() : trả về 2 thuộc tính value và done
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+  ```
+    iterator.next()
+  ```
+  - Dùng để chạy generator function, mỗi lần gọi next là mỗi lần yield sẽ được chạy
+  - **value** là giá trị mỗi lần chạy của yield
+  - **done** cho biết là đã kết thúc hàm hay chưa, **false** là chưa kết thúc
 
-## Available Scripts
+  **Ví dụ:**
+```
+  function* ABC(){
+    yield "Chạy lần đầu";
+    yield "Chạy lần 2";
+  }
+  const iterator = ABC();
+  console.log(iterator.next())
+  console.log(iterator.next())
+```
+  ![image](https://user-images.githubusercontent.com/114068860/212686428-ee5e0c62-faad-43ee-971f-8409263d919b.png)
+  ![image](https://user-images.githubusercontent.com/114068860/212686710-58e9b8d0-f6de-4524-8605-84615b153c85.png)
 
-In the project directory, you can run:
+  ### return : Dùng để kết thúc hàm generator
+  ### throw: Dùng để trả ra lỗi khi thực thi hàm generator
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```
+    function* ABC(){
+    yield "Chạy lần đầu";
+    throw "Có lỗi xảy ra"
+    yield "Chạy lần 2";
+  }
+  const iterator = ABC();
+  console.log(iterator.next())
+  console.log(iterator.next())
+  ```
+  ![image](https://user-images.githubusercontent.com/114068860/212688490-cd4bf519-6209-413c-9eac-a7035baf5fd3.png)
