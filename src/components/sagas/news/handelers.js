@@ -14,10 +14,3 @@ yield put(setLoading(false))
     console.log(error);
   }
 }
- function* ABC() {
-   yield "Chạy lần đầu";
-   yield "Chạy lần 2";
- }
- const iterator = ABC();
- console.log(iterator.next());
- console.log(iterator.next());
